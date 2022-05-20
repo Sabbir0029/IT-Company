@@ -25,7 +25,7 @@ const SignUp = () => {
     e.preventDefault();
   };
   return (
-    <div className="d-flex align-items-center justify-content-center">
+    <div className="d-flex align-items-center justify-content-center mb-5">
       <div className="container mt-5 signInBox">
         <div class="row">
           <div class="col-sm-12 col-md-5 bg-success d-flex align-items-center justify-content-center">
