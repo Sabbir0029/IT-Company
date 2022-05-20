@@ -1,23 +1,47 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import "./App.css";
+import AuthProvider from "./Contexts/AuthProvider/AuthProvider";
+import AdminRoute from "./pages/Authentication/AdminRoute/AdminRoute";
+import SignIn from "./pages/Authentication/SignIn/SignIn";
+import SignUp from "./pages/Authentication/SignUp/SignUp";
+import Home from "./pages/Home/Home/Home";
+import JobCircular from "./pages/JobCircular/JobCircular";
+import JobPost from "./pages/JobPost/JobPost";
+import MakAdmin from "./pages/MakeAdmin/MakAdmin";
+import Navigation from "./pages/Navigation/Navigation";
+import OurServices from "./pages/OurServices/OurServices";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <AuthProvider>
+        <BrowserRouter>
+          <Navigation></Navigation>
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route path="/SignIn">
+              <SignIn />
+            </Route>
+            <Route path="/JobCircular">
+              <JobCircular />
+            </Route>
+            <AdminRoute path="/JobPost">
+              <JobPost/>
+            </AdminRoute>
+            <Route path="/OurServices">
+              <OurServices />
+            </Route>
+            <AdminRoute path="/makeAdmin">
+              <MakAdmin />
+            </AdminRoute>
+            <Route path="/SignUp">
+              <SignUp />
+            </Route>
+          </Switch>
+        </BrowserRouter>
+      </AuthProvider>
     </div>
   );
 }
